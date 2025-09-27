@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alumni Pensionato Bertoni – Milano</title>
+  <meta name="description" content="Directory degli studenti e alumni del Pensionato Universitario Bertoni (Milano): profili, corsi di studio/lavoro e contatti, con ricerca rapida." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0d12;
+      --panel:#131824;
+      --text:#e8ebf0;
+      --mute:#a8b0c2;
+      --brand:#6aa3ff;
+      --brand-2:#9de1d6;
+      --ring: rgba(106,163,255,.35);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background: radial-gradient(1200px 800px at 70% -10%, rgba(106,163,255,.15), transparent 60%),
+                  radial-gradient(1000px 600px at -10% 20%, rgba(157,225,214,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1180px, 92%); margin-inline:auto}
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(8px); background:rgba(11,13,18,.55); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
+    .logo{width:28px; height:28px; border-radius:8px; background:
+      radial-gradient(120% 120% at 100% 0%, var(--brand) 0 40%, transparent 41%),
+      radial-gradient(120% 120% at 0% 100%, var(--brand-2) 0 40%, transparent 41%),
+      linear-gradient(135deg, #1c2333, #0f1422); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15)}
+    .nav a.link{padding:8px 12px; border-radius:12px; color:var(--mute)}
+    .nav a.link:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .menu{display:flex; gap:6px}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background:#0f1422; color:var(--text); box-shadow:var(--shadow)}
+    .btn:hover{border-color:rgba(255,255,255,.2)}
+    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0a0e16; font-weight:700; border:none}
+    .hamburger{display:none}
+    header{padding:54px 0 24px}
+    h1{font-size: clamp(34px, 6vw, 54px); line-height:1.08; margin:6px 0 10px}
+    .subtitle{color:var(--mute); font-size: clamp(16px, 2.2vw, 19px)}
+    .searchbar{margin-top:22px}
+    .search{display:flex; gap:10px; align-items:center}
+    .search input[type="search"], .search select{
+      flex:1; min-width:0; padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.16); background:#0f1422; color:var(--text)
+    }
+    .search input[type="search"]:focus, .search select:focus{outline:2px solid var(--ring); border-color:transparent}
+    .grid{display:grid; grid-template-columns:repeat(1, 1fr); gap:16px}
+    @media (min-width: 560px){ .grid{grid-template-columns:repeat(2, 1fr)} }
+    @media (min-width: 900px){ .grid{grid-template-columns:repeat(3, 1fr)} }
+    @media (min-width: 1160px){ .grid{grid-template-columns:repeat(4, 1fr)} }
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.35)}
+    .card .inner{padding:18px}
+    .avatar{width:100%; aspect-ratio:1/1; border-radius:12px; background:linear-gradient(135deg,#1a2234,#0e1422); border:1px dashed rgba(255,255,255,.12); display:grid; place-items:center; color:var(--mute); font-size:14px; overflow:hidden}
+    .avatar img{width:100%; height:100%; object-fit:cover}
+    .name{display:flex; align-items:center; justify-content:space-between; gap:8px; margin:12px 0 6px}
+    .name b{font-size:18px}
+    .meta{color:var(--mute); font-size:14px; margin:0}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{font-size:12px; padding:4px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.18); color:var(--mute)}
+    .actions{display:flex; align-items:center; gap:10px; margin-top:12px}
+    .icon{width:18px; height:18px; display:inline-block}
+    .icon svg{width:100%; height:100%}
+    .link-quiet{color:var(--mute)}
+    .link-quiet:hover{color:var(--text)}
+    .count{color:var(--mute); margin:16px 0 8px}
+    .profile-form label{display:flex; flex-direction:column; gap:6px; color:var(--mute); font-size:14px}
+    .profile-form input, .profile-form select{padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:#0f1422; color:#e8ebf0}
+    .profile-form input:focus, .profile-form select:focus{outline:2px solid rgba(106,163,255,.35); border-color:transparent}
+    .grid-2{display:grid; grid-template-columns:1fr; gap:12px}
+    @media(min-width:720px){ .grid-2{grid-template-columns:1fr 1fr} }
+    footer{padding:28px 0 60px; color:#a8b0c2; border-top:1px solid rgba(255,255,255,.08); margin-top:40px}
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Principale">
+    <div class="container nav-inner">
+      <a class="brand" href="#"><span class="logo" aria-hidden="true"></span><span>Pensionato Bertoni · Alumni</span></a>
+      <div class="menu" role="menubar">
+        <a class="link" href="#alumni">Alumni</a>
+        <a class="link" href="#generazioni">Generazioni</a>
+        <a class="link" href="#aggiungi">Aggiungi profilo</a>
+        <a class="link" href="#contatti">Contatti</a>
+      </div>
+      <a class="btn primary" href="#alumni">Cerca profili</a>
+    </div>
+  </nav>
+
+  <header class="container">
+    <h1>Alumni Pensionato Bertoni</h1>
+    <p class="subtitle">Directory interna degli studenti e laureati del Pensionato Universitario Bertoni (Milano). Cerca per nome, corso di studi, lavoro, competenze o generazione per costruire il tuo network e trovare informazioni utili.</p>
+
+    <div id="alumni" class="searchbar">
+      <form id="searchForm" class="search" role="search" aria-label="Ricerca profili">
+        <input id="q" name="q" type="search" placeholder="Cerca per nome, corso (es. Ingegneria), ruolo (es. Data Engineer), skill (es. Python), azienda o anno" autocomplete="off" />
+        <select id="gen" name="gen" aria-label="Filtra per generazione">
+          <option value="">Tutte le generazioni</option>
+          <option value="2025">Generazione 2025</option>
+          <option value="2024">Generazione 2024</option>
+          <option value="2023">Generazione 2023</option>
+          <option value="2022">Generazione 2022</option>
+          <option value="ex">Ex residenti</option>
+        </select>
+        <button class="btn" type="submit">Filtra</button>
+      </form>
+      <p id="count" class="count" aria-live="polite"></p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section aria-label="Elenco profili">
+      <div id="grid" class="grid" role="list"></div>
+    </section>
+
+    <section id="generazioni" style="margin-top:42px">
+      <h2>Generazioni</h2>
+      <p class="subtitle">Raggruppa e scopri studenti per anno di ingresso/uscita. (Sezione espandibile: timeline, foto di gruppo, eventi.)</p>
+    </section>
+
+    <section id="aggiungi" style="margin-top:42px">
+      <h2>Aggiungi il tuo profilo</h2>
+      <p class="subtitle">Compila i campi: comparirai subito nell’elenco (demo: i dati non sono salvati su server finché non attiviamo un backend).</p>
+      <div class="card"><div class="inner">
+        <form id="addForm" class="profile-form">
+          <div class="grid-2">
+            <label>Nome<input id="nome" name="nome" required placeholder="Nome Cognome"></label>
+            <label>Anni di permanenza<input id="anni" name="anni" placeholder="es. 2022–oggi"></label>
+            <label>Piano<select id="piano" name="piano"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+            <label>Corso di studi<input id="corso" name="corso" placeholder="Ingegneria Meccanica (PoliMi)"></label>
+            <label>Ruolo/Lavoro<input id="ruolo" name="ruolo" placeholder="es. Studente / Motorcycle Factory"></label>
+            <label>Azienda/Team<input id="azienda" name="azienda" placeholder="es. PoliMi Motorcycle Factory"></label>
+            <label>Skill (separate da virgola)<input id="skills" name="skills" placeholder="Python, CAD, Teamwork"></label>
+            <label>Email<input id="email" name="email" type="email" placeholder="nome@esempio.com"></label>
+            <label>LinkedIn<input id="linkedin" name="linkedin" type="url" placeholder="https://www.linkedin.com/in/..."></label>
+            <label>Foto (URL)<input id="fotoUrl" name="fotoUrl" type="url" placeholder="assets/foto/francesco_sala.jpg"></label>
+            <label>Foto (file)<input id="fotoFile" name="fotoFile" type="file" accept="image/*"></label>
+          </div>
+          <button class="btn primary" type="submit">Aggiungi profilo</button>
+          <small id="addNote" class="meta"></small>
+        </form>
+      </div></div>
+    </section>
+
+    <section id="contatti" style="margin-top:42px">
+      <h2>Contatti</h2>
+      <p class="subtitle">Pagina interna non ufficiale a supporto della community. Per richieste di correzione profilo o inserimento, contatta l'amministratore.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <small>© <span id="year"></span> Alumni Pensionato Bertoni · Milano.</small>
+      <small><a href="#">Privacy</a> · <a href="#">Termini</a></small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const ALUMNI = [
+      { id:1, nome:"Francesco Sala", corso:"Ingegneria Meccanica (PoliMi)", ruolo:"Studente / Motorcycle Factory", azienda:"PoliMi Motorcycle Factory", anni:"2022–oggi", piano:2, skills:["Motorsport","Teamwork","Design"], email:"francesco.sala@example.com", foto:"assets/foto/francesco_sala.jpg" },
+      { id:2, nome:"Giulia Bianchi", corso:"Architettura", ruolo:"Tirocinante BIM", azienda:"Studio ABC", anni:"2021–2024", piano:2, skills:["Revit","BIM","Render"], email:"giulia@example.com", foto:"" },
+      { id:3, nome:"Luca Verdi", corso:"Informatica", ruolo:"Data Engineer", azienda:"FinTech S.p.A.", anni:"2020–2023", piano:4, skills:["Python","SQL","ETL"], email:"luca@example.com", foto:"" },
+      { id:4, nome:"Sara Neri", corso:"Design del Prodotto", ruolo:"UX/UI Designer", azienda:"Agenzia Pixel", anni:"2023–", piano:1, skills:["Figma","UX Research","Prototyping"], email:"sara@example.com", foto:"" }
+    ];
+
+    const grid = document.getElementById('grid');
+    const count = document.getElementById('count');
+
+    function tagify(list){
+      return list.map(t=>`<span class="tag">${t}</span>`).join('');
+    }
+
+    function card(p){
+      const placeholder = `<div class="avatar">Foto</div>`;
+      const avatar = p.foto ? `<div class="avatar"><img src="${p.foto}" alt="Foto di ${p.nome}"/></div>` : placeholder;
+      const li = p.linkedin ? `<a class="link-quiet" href="${p.linkedin}" target="_blank" rel="noopener" title="Profilo LinkedIn di ${p.nome}">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V23h-4V8zM8 8h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.75 1.86-2.75 3.78V23h-4V8z"/></svg>
+        </span> LinkedIn</a>` : '';
+      return `
+        <article class="card" role="listitem">
+          <div class="inner">
+            ${avatar}
+            <div class="name"><b>${p.nome}</b><span class="tag">${p.anni} · ${p.piano}° piano</span></div>
+            <p class="meta">${p.corso}</p>
+            <p class="meta">${p.ruolo}${p.azienda? ' · ' + p.azienda : ''}</p>
+            <div class="tags">${tagify(p.skills||[])}</div>
+            <div class="actions">${li}</div>
+          </div>
+        </article>`;
+    }
+
+    function render(list){
+      grid.innerHTML = list.map(card).join('');
+      count.textContent = `${list.length} profili mostrati`;
+    }
+
+    function normalize(s){ return (s||'').toString().toLowerCase(); }
+    function matchQuery(p, q){
+      if(!q) return true;
+      const hay = [p.nome, p.corso, p.ruolo, p.azienda, (p.skills||[]).join(' '), p.anni, p.generazione].map(normalize).join(' ');
+      return hay.includes(normalize(q));
+    }
+
+    function applyFilter(evt){
+      if(evt) evt.preventDefault();
+      const q = document.getElementById('q').value.trim();
+      const gen = document.getElementById('gen').value;
+      const filtered = ALUMNI.filter(p => matchQuery(p, q) && (gen ? String(p.generazione)===String(gen) : true));
+      render(filtered);
+    }
+
+    document.getElementById('searchForm').addEventListener('submit', applyFilter);
+    document.getElementById('q').addEventListener('input', applyFilter);
+    document.getElementById('gen').addEventListener('change', applyFilter);
+
+    const addForm = document.getElementById('addForm');
+    if (addForm) {
+      function readFileAsDataURL(file){
+        return new Promise((resolve,reject)=>{
+          const fr = new FileReader();
+          fr.onload = () => resolve(fr.result);
+          fr.onerror = reject;
+          fr.readAsDataURL(file);
+        });
+      }
+      addForm.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const f = e.target;
+        const skills = (f.skills.value||'').split(',').map(s=>s.trim()).filter(Boolean);
+        let fotoVal = f.fotoUrl.value.trim();
+        if (f.fotoFile.files && f.fotoFile.files[0]) {
+          try { fotoVal = await readFileAsDataURL(f.fotoFile.files[0]); } catch {}
+        }
+        const nextId = (ALUMNI.reduce((m,p)=>Math.max(m,p.id||0),0)+1) || 1;
+        const prof = {
+          id: nextId,
+          nome: f.nome.value.trim(),
+          corso: f.corso.value.trim(),
+          ruolo: f.ruolo.value.trim(),
+          azienda: f.azienda.value.trim(),
+          anni: f.anni.value.trim(),
+          piano: parseInt(f.piano.value,10) || '',
+          skills,
+          email: f.email.value.trim(),
+          linkedin: f.linkedin.value.trim(),
+          foto: fotoVal
+        };
+        if(!prof.nome){ f.nome.focus(); return; }
+        ALUMNI.push(prof);
+        applyFilter();
+        f.reset();
+        document.getElementById('addNote').textContent = 'Profilo aggiunto! (demo: non salvato su server)';
+      });
+    }
+
+    render(ALUMNI);
+  </script>
+</body>
+</html>
