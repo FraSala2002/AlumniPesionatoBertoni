@@ -5,25 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Alumni Pensionato Bertoni – Milano</title>
   <meta name="description" content="Directory degli studenti e alumni del Pensionato Universitario Bertoni (Milano): profili, corsi di studio/lavoro e contatti, con ricerca rapida." />
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS interno: definisce colori, layout e stili -->
   <style>
     :root{
-      --bg:#0b0d12;
-      --panel:#131824;
-      --text:#e8ebf0;
-      --mute:#a8b0c2;
-      --brand:#6aa3ff;
-      --brand-2:#9de1d6;
-      --ring: rgba(106,163,255,.35);
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --bg:#0b0d12;              /* Colore sfondo base */
+      --panel:#131824;           /* Colore pannelli */
+      --text:#e8ebf0;            /* Colore testo */
+      --mute:#a8b0c2;            /* Colore testo secondario */
+      --brand:#6aa3ff;           /* Colore principale */
+      --brand-2:#9de1d6;         /* Colore secondario */
+      --ring: rgba(106,163,255,.35); /* Highlight focus */
+      --radius: 16px;            /* Raggio border-radius */
+      --shadow: 0 10px 30px rgba(0,0,0,.35); /* Ombra */
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      /* sfondo con gradienti */
       background: radial-gradient(1200px 800px at 70% -10%, rgba(106,163,255,.15), transparent 60%),
                   radial-gradient(1000px 600px at -10% 20%, rgba(157,225,214,.12), transparent 55%),
                   var(--bg);
@@ -31,6 +35,8 @@
     }
     a{color:inherit; text-decoration:none}
     .container{width:min(1180px, 92%); margin-inline:auto}
+
+    /* NAVBAR */
     .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(8px); background:rgba(11,13,18,.55); border-bottom:1px solid rgba(255,255,255,.06)}
     .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
@@ -44,24 +50,32 @@
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background:#0f1422; color:var(--text); box-shadow:var(--shadow)}
     .btn:hover{border-color:rgba(255,255,255,.2)}
     .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0a0e16; font-weight:700; border:none}
-    .hamburger{display:none}
+
+    /* HEADER E RICERCA */
     header{padding:54px 0 24px}
     h1{font-size: clamp(34px, 6vw, 54px); line-height:1.08; margin:6px 0 10px}
     .subtitle{color:var(--mute); font-size: clamp(16px, 2.2vw, 19px)}
+
     .searchbar{margin-top:22px}
     .search{display:flex; gap:10px; align-items:center}
     .search input[type="search"], .search select{
       flex:1; min-width:0; padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.16); background:#0f1422; color:var(--text)
     }
     .search input[type="search"]:focus, .search select:focus{outline:2px solid var(--ring); border-color:transparent}
+
+    /* GRID per le card profilo */
     .grid{display:grid; grid-template-columns:repeat(1, 1fr); gap:16px}
     @media (min-width: 560px){ .grid{grid-template-columns:repeat(2, 1fr)} }
     @media (min-width: 900px){ .grid{grid-template-columns:repeat(3, 1fr)} }
     @media (min-width: 1160px){ .grid{grid-template-columns:repeat(4, 1fr)} }
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.35)}
+
+    /* CARD profilo */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); box-shadow: var(--shadow)}
     .card .inner{padding:18px}
     .avatar{width:100%; aspect-ratio:1/1; border-radius:12px; background:linear-gradient(135deg,#1a2234,#0e1422); border:1px dashed rgba(255,255,255,.12); display:grid; place-items:center; color:var(--mute); font-size:14px; overflow:hidden}
     .avatar img{width:100%; height:100%; object-fit:cover}
+
+    /* Info nella card */
     .name{display:flex; align-items:center; justify-content:space-between; gap:8px; margin:12px 0 6px}
     .name b{font-size:18px}
     .meta{color:var(--mute); font-size:14px; margin:0}
@@ -72,20 +86,31 @@
     .icon svg{width:100%; height:100%}
     .link-quiet{color:var(--mute)}
     .link-quiet:hover{color:var(--text)}
+
+    /* Counter dei profili */
     .count{color:var(--mute); margin:16px 0 8px}
+
+    /* Form Aggiungi profilo */
     .profile-form label{display:flex; flex-direction:column; gap:6px; color:var(--mute); font-size:14px}
-    .profile-form input, .profile-form select{padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:#0f1422; color:#e8ebf0}
-    .profile-form input:focus, .profile-form select:focus{outline:2px solid rgba(106,163,255,.35); border-color:transparent}
+    .profile-form input, .profile-form select{padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:#0f1422; color:var(--text)}
+    .profile-form input:focus, .profile-form select:focus{outline:2px solid var(--ring); border-color:transparent}
     .grid-2{display:grid; grid-template-columns:1fr; gap:12px}
     @media(min-width:720px){ .grid-2{grid-template-columns:1fr 1fr} }
-    footer{padding:28px 0 60px; color:#a8b0c2; border-top:1px solid rgba(255,255,255,.08); margin-top:40px}
+
+    /* FOOTER */
+    footer{padding:28px 0 60px; color:var(--mute); border-top:1px solid rgba(255,255,255,.08); margin-top:40px}
   </style>
 </head>
 <body>
+  <!-- NAVBAR -->
   <nav class="nav" aria-label="Principale">
     <div class="container nav-inner">
-      <a class="brand" href="#"><span class="logo" aria-hidden="true"></span><span>Pensionato Bertoni · Alumni</span></a>
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Pensionato Bertoni · Alumni</span>
+      </a>
       <div class="menu" role="menubar">
+        <!-- Link rapidi per navigazione -->
         <a class="link" href="#alumni">Alumni</a>
         <a class="link" href="#generazioni">Generazioni</a>
         <a class="link" href="#aggiungi">Aggiungi profilo</a>
@@ -95,6 +120,7 @@
     </div>
   </nav>
 
+  <!-- HEADER: titolo + barra di ricerca -->
   <header class="container">
     <h1>Alumni Pensionato Bertoni</h1>
     <p class="subtitle">Directory interna degli studenti e laureati del Pensionato Universitario Bertoni (Milano). Cerca per nome, corso di studi, lavoro, competenze o generazione per costruire il tuo network e trovare informazioni utili.</p>
@@ -112,20 +138,25 @@
         </select>
         <button class="btn" type="submit">Filtra</button>
       </form>
+      <!-- Qui mostra il numero di profili filtrati -->
       <p id="count" class="count" aria-live="polite"></p>
     </div>
   </header>
 
+  <!-- MAIN con griglia profili e sezioni -->
   <main class="container">
+    <!-- Griglia profili -->
     <section aria-label="Elenco profili">
       <div id="grid" class="grid" role="list"></div>
     </section>
 
+    <!-- Sezione Generazioni -->
     <section id="generazioni" style="margin-top:42px">
       <h2>Generazioni</h2>
       <p class="subtitle">Raggruppa e scopri studenti per anno di ingresso/uscita. (Sezione espandibile: timeline, foto di gruppo, eventi.)</p>
     </section>
 
+    <!-- Form per aggiungere un nuovo profilo -->
     <section id="aggiungi" style="margin-top:42px">
       <h2>Aggiungi il tuo profilo</h2>
       <p class="subtitle">Compila i campi: comparirai subito nell’elenco (demo: i dati non sono salvati su server finché non attiviamo un backend).</p>
@@ -141,7 +172,7 @@
             <label>Skill (separate da virgola)<input id="skills" name="skills" placeholder="Python, CAD, Teamwork"></label>
             <label>Email<input id="email" name="email" type="email" placeholder="nome@esempio.com"></label>
             <label>LinkedIn<input id="linkedin" name="linkedin" type="url" placeholder="https://www.linkedin.com/in/..."></label>
-            <label>Foto (URL)<input id="fotoUrl" name="fotoUrl" type="url" placeholder="assets/foto/francesco_sala.jpg"></label>
+            <label>Foto (URL)<input id="fotoUrl" name="fotoUrl" type="url" placeholder="https://.../foto.jpg"></label>
             <label>Foto (file)<input id="fotoFile" name="fotoFile" type="file" accept="image/*"></label>
           </div>
           <button class="btn primary" type="submit">Aggiungi profilo</button>
@@ -150,12 +181,14 @@
       </div></div>
     </section>
 
+    <!-- Contatti -->
     <section id="contatti" style="margin-top:42px">
       <h2>Contatti</h2>
       <p class="subtitle">Pagina interna non ufficiale a supporto della community. Per richieste di correzione profilo o inserimento, contatta l'amministratore.</p>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
       <small>© <span id="year"></span> Alumni Pensionato Bertoni · Milano.</small>
@@ -163,25 +196,31 @@
     </div>
   </footer>
 
+  <!-- SCRIPT JAVASCRIPT -->
   <script>
+    // Mostra anno corrente nel footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Dataset demo (profili iniziali)
     const ALUMNI = [
-      { id:1, nome:"Francesco Sala", corso:"Ingegneria Meccanica (PoliMi)", ruolo:"Studente / Motorcycle Factory", azienda:"PoliMi Motorcycle Factory", anni:"2022–oggi", piano:2, skills:["Motorsport","Teamwork","Design"], email:"francescosala2002@gmail.com", foto:"francesco_sala.jpg" },
+      { id:1, nome:"Francesco Sala", corso:"Ingegneria Meccanica (PoliMi)", ruolo:"Studente / Motorcycle Factory", azienda:"PoliMi Motorcycle Factory", anni:"2022–oggi", piano:2, skills:["Motorsport","Teamwork","Design"], email:"francesco.sala@example.com", foto:"francesco_sala.jpg" },
       { id:2, nome:"Giulia Bianchi", corso:"Architettura", ruolo:"Tirocinante BIM", azienda:"Studio ABC", anni:"2021–2024", piano:2, skills:["Revit","BIM","Render"], email:"giulia@example.com", foto:"" },
       { id:3, nome:"Luca Verdi", corso:"Informatica", ruolo:"Data Engineer", azienda:"FinTech S.p.A.", anni:"2020–2023", piano:4, skills:["Python","SQL","ETL"], email:"luca@example.com", foto:"" },
       { id:4, nome:"Sara Neri", corso:"Design del Prodotto", ruolo:"UX/UI Designer", azienda:"Agenzia Pixel", anni:"2023–", piano:1, skills:["Figma","UX Research","Prototyping"], email:"sara@example.com", foto:"" }
     ];
 
+    // Riferimenti agli elementi DOM
     const grid = document.getElementById('grid');
     const count = document.getElementById('count');
 
+    // Trasforma lista di skill in badge <span>
     function tagify(list){
       return list.map(t=>`<span class="tag">${t}</span>`).join('');
     }
 
+    // Funzione che crea l'HTML per una card profilo
     function card(p){
-      const placeholder = `<div class="avatar">Foto</div>`;
+      const placeholder = `<div class=\"avatar\">Foto</div>`;
       const avatar = p.foto ? `<div class="avatar"><img src="${p.foto}" alt="Foto di ${p.nome}"/></div>` : placeholder;
       const li = p.linkedin ? `<a class="link-quiet" href="${p.linkedin}" target="_blank" rel="noopener" title="Profilo LinkedIn di ${p.nome}">
         <span class="icon" aria-hidden="true">
