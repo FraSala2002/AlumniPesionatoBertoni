@@ -12,44 +12,57 @@
 
   <!-- CSS interno: definisce colori, layout e stili -->
   <style>
-    :root{ --bg:#0b0d12; /* Colore sfondo base */ 
-          --panel:#131824; /* Colore pannelli */ 
-          --text:#e8ebf0; /* Colore testo */ 
-          --mute:#a8b0c2; /* Colore testo secondario */ 
-          --brand:#6aa3ff; /* Colore principale */ 
-          --brand-2:#9de1d6; /* Colore secondario */ 
-          --ring: rgba(106,163,255,.35); /* Highlight focus */ 
-          --radius: 16px; /* Raggio border-radius */ 
-          --shadow: 0 10px 30px rgba(0,0,0,.35); /* Ombra */ 
-         }
+
+    :root{
+    /* Bright Bertoni palette */
+          --bg: #f6f9fe;          /* page background (very light) */
+          --panel: #0f1422;       /* dark panels/cards for profiles */
+          --text: #0b1220;        /* main text (very dark blue) */
+          --mute: #5a6a87;        /* secondary text */
+    
+          --brand: #58b6ff;       /* sky blue (header/cta accent) */
+          --brand-2: #ffd15e;     /* warm accent (stars/gold tone) */
+          --accent-red: #e53935;  /* flag red (sparingly) */
+
+          --ring: rgba(88,182,255,.45);
+          --radius: 16px;
+          --shadow: 0 10px 30px rgba(11,18,32,.12);
+        }
     
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      /* sfondo con gradienti */
-      background: radial-gradient(1200px 800px at 70% -10%, rgba(106,163,255,.15), transparent 60%),
-                  radial-gradient(1000px 600px at -10% 20%, rgba(157,225,214,.12), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-    }
+  margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 800px at 70% -10%, rgba(88,182,255,.18), transparent 60%),
+    radial-gradient(1000px 600px at -10% 20%, rgba(255,209,94,.15), transparent 55%),
+    var(--bg);
+  color:var(--text);
+        }
+
+    
     a{color:inherit; text-decoration:none}
     .container{width:min(1180px, 92%); margin-inline:auto}
 
-    /* NAVBAR */
-    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(8px); background:rgba(11,13,18,.55); border-bottom:1px solid rgba(255,255,255,.06)}
+    /* NAVBAR */.nav{ position:sticky; top:0; z-index:50;  backdrop-filter:saturate(140%) blur(8px);  background:rgba(255,255,255,.7); border-bottom:1px solid rgba(15,20,34,.08);}
     .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
     .logo{width:28px; height:28px; border-radius:8px; background:
       radial-gradient(120% 120% at 100% 0%, var(--brand) 0 40%, transparent 41%),
       radial-gradient(120% 120% at 0% 100%, var(--brand-2) 0 40%, transparent 41%),
       linear-gradient(135deg, #1c2333, #0f1422); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15)}
-    .nav a.link{padding:8px 12px; border-radius:12px; color:var(--mute)}
-    .nav a.link:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    
+    .nav a.link{ color: var(--mute); }
+    .nav a.link:hover{ background:rgba(15,20,34,.06); color:var(--text); }
     .menu{display:flex; gap:6px}
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background:#0f1422; color:var(--text); box-shadow:var(--shadow)}
-    .btn:hover{border-color:rgba(255,255,255,.2)}
-    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0a0e16; font-weight:700; border:none}
+    
+.btn{ border:1px solid rgba(15,20,34,.12); background:#ffffff; color:var(--text); }
+.btn.primary{
+  background:linear-gradient(135deg, var(--brand), var(--brand-2));
+  color:#082031; border:none;
+}
+.tag{ border:1px solid rgba(15,20,34,.12); color:#33415c; background: #ffffff; }
 
     /* HEADER E RICERCA */
     header{padding:54px 0 24px}
@@ -70,15 +83,17 @@
     @media (min-width: 1160px){ .grid{grid-template-columns:repeat(4, 1fr)} }
 
     /* CARD profilo */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); box-shadow: var(--shadow)}
+    .card{ background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius);box-shadow: 0 10px 30px rgba(11,18,32,.18);background-color: var(--panel);   /* <- darker panels */}
     .card .inner{padding:18px}
-    .avatar{width:100%; aspect-ratio:1/1; border-radius:12px; background:linear-gradient(135deg,#1a2234,#0e1422); border:1px dashed rgba(255,255,255,.12); display:grid; place-items:center; color:var(--mute); font-size:14px; overflow:hidden}
+     .avatar{ background:linear-gradient(135deg,#1b2440,#0f1422); border:1px dashed rgba(255,255,255,.18); }
     .avatar img{width:100%; height:100%; object-fit:cover}
+
+
 
     /* Info nella card */
     .name{display:flex; align-items:center; justify-content:space-between; gap:8px; margin:12px 0 6px}
     .name b{font-size:18px}
-    .meta{color:var(--mute); font-size:14px; margin:0}
+    .meta{ color:#b7c2d9; }  /* lighter text on dark cards */
     .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
     .tag{font-size:12px; padding:4px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.18); color:var(--mute)}
     .actions{display:flex; align-items:center; gap:10px; margin-top:12px}
