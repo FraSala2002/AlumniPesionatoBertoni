@@ -12,49 +12,48 @@
 
   <!-- CSS interno: definisce colori, layout e stili -->
   <style>
-    :root{
-  /* Bright Bertoni palette */
-  --bg: #f6f9fe;          /* page background (very light) */
-  --panel: #0f1422;       /* dark panels/cards for profiles */
-  --text: #0b1220;        /* main text (very dark blue) */
-  --mute: #5a6a87;        /* secondary text */
+  :root{
+  /* Apple-style minimal palette */
+  --bg: #f5f5f7;          /* light gray background */
+  --panel: #ffffff;       /* white panels/cards */
+  --text: #1d1d1f;        /* main text, almost black */
+  --mute: #6e6e73;        /* muted gray text */
 
-  --brand: #58b6ff;       /* sky blue (header/cta accent) */
-  --brand-2: #ffd15e;     /* warm accent (stars/gold tone) */
-  --accent-red: #e53935;  /* flag red (sparingly) */
+  --brand: #0071e3;       /* Apple blue (links, buttons) */
+  --brand-2: #2997ff;     /* lighter hover blue */
 
-  --ring: rgba(88,182,255,.45);
-  --radius: 16px;
-  --shadow: 0 10px 30px rgba(11,18,32,.12);
-    }
+  --ring: rgba(0,113,227,.35);  /* blue focus ring */
+  --radius: 12px;         /* Apple uses softer corners */
+  --shadow: 0 2px 12px rgba(0,0,0,.08); /* subtle shadow */
+}
+
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      /* sfondo con gradienti */
-      background: radial-gradient(1200px 800px at 70% -10%, rgba(106,163,255,.15), transparent 60%),
-                  radial-gradient(1000px 600px at -10% 20%, rgba(157,225,214,.12), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-    }
+     body{
+          margin:0; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          background: var(--bg);
+          color: var(--text);
+          }
+
     a{color:inherit; text-decoration:none}
     .container{width:min(1180px, 92%); margin-inline:auto}
 
     /* NAVBAR */
-    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(8px); background:rgba(11,13,18,.55); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{position:sticky; top:0; z-index:50;background:#ffffff;border-bottom:1px solid rgba(0,0,0,.08);box-shadow: 0 1px 2px rgba(0,0,0,.04);}
     .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
     .logo{width:28px; height:28px; border-radius:8px; background:
       radial-gradient(120% 120% at 100% 0%, var(--brand) 0 40%, transparent 41%),
       radial-gradient(120% 120% at 0% 100%, var(--brand-2) 0 40%, transparent 41%),
       linear-gradient(135deg, #1c2333, #0f1422); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15)}
-    .nav a.link{padding:8px 12px; border-radius:12px; color:var(--mute)}
-    .nav a.link:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .nav a.link{ color: var(--mute); }
+    .nav a.link:hover{ color: var(--text); background:rgba(0,0,0,.04); }
     .menu{display:flex; gap:6px}
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background:#0f1422; color:var(--text); box-shadow:var(--shadow)}
-    .btn:hover{border-color:rgba(255,255,255,.2)}
-    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0a0e16; font-weight:700; border:none}
+    .btn{border:1px solid rgba(0,0,0,.1);background:#ffffff;color:var(--text);border-radius: 980px; /* Apple pill shape */padding: 10px 20px;}
+    .btn.primary{background: var(--brand);color:#fff;border:none;}
+    .btn.primary:hover{ background: var(--brand-2); }
+
 
     /* HEADER E RICERCA */
     header{padding:54px 0 24px}
@@ -75,17 +74,16 @@
     @media (min-width: 1160px){ .grid{grid-template-columns:repeat(4, 1fr)} }
 
     /* CARD profilo */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); box-shadow: var(--shadow)}
-    .card .inner{padding:18px}
-    .avatar{width:100%; aspect-ratio:1/1; border-radius:12px; background:linear-gradient(135deg,#1a2234,#0e1422); border:1px dashed rgba(255,255,255,.12); display:grid; place-items:center; color:var(--mute); font-size:14px; overflow:hidden}
-    .avatar img{width:100%; height:100%; object-fit:cover}
+  .card{background: var(--panel);border:1px solid rgba(0,0,0,.08);border-radius: var(--radius);box-shadow: var(--shadow);}
+  .avatar{ background:#f5f5f7; border:1px solid rgba(0,0,0,.06); }
+
+
 
     /* Info nella card */
     .name{display:flex; align-items:center; justify-content:space-between; gap:8px; margin:12px 0 6px}
     .name b{font-size:18px}
-    .meta{color:var(--mute); font-size:14px; margin:0}
-    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-    .tag{font-size:12px; padding:4px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.18); color:var(--mute)}
+    .meta{ color: var(--mute); }
+    .tag{border:1px solid rgba(0,0,0,.08);background:#f5f5f7;color:#1d1d1f;}
     .actions{display:flex; align-items:center; gap:10px; margin-top:12px}
     .icon{width:18px; height:18px; display:inline-block}
     .icon svg{width:100%; height:100%}
@@ -96,9 +94,11 @@
     .count{color:var(--mute); margin:16px 0 8px}
 
     /* Form Aggiungi profilo */
-    .profile-form label{display:flex; flex-direction:column; gap:6px; color:var(--mute); font-size:14px}
-    .profile-form input, .profile-form select{padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:#0f1422; color:var(--text)}
-    .profile-form input:focus, .profile-form select:focus{outline:2px solid var(--ring); border-color:transparent}
+    .profile-form input,
+    .profile-form select{border:1px solid rgba(0,0,0,.2);background:#ffffff;color:var(--text); border-radius:8px;}
+    .profile-form input:focus,
+    .profile-form select:focus{outline:2px solid var(--brand);border-color:transparent;}
+
     .grid-2{display:grid; grid-template-columns:1fr; gap:12px}
     @media(min-width:720px){ .grid-2{grid-template-columns:1fr 1fr} }
 
