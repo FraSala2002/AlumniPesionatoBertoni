@@ -13,16 +13,21 @@
   <!-- CSS interno: definisce colori, layout e stili -->
   <style>
     :root{
-      --bg:#0b0d12;              /* Colore sfondo base */
-      --panel:#131824;           /* Colore pannelli */
-      --text:#e8ebf0;            /* Colore testo */
-      --mute:#a8b0c2;            /* Colore testo secondario */
-      --brand:#6aa3ff;           /* Colore principale */
-      --brand-2:#9de1d6;         /* Colore secondario */
-      --ring: rgba(106,163,255,.35); /* Highlight focus */
-      --radius: 16px;            /* Raggio border-radius */
-      --shadow: 0 10px 30px rgba(0,0,0,.35); /* Ombra */
+  /* Bright Bertoni palette */
+  --bg: #f6f9fe;          /* page background (very light) */
+  --panel: #0f1422;       /* dark panels/cards for profiles */
+  --text: #0b1220;        /* main text (very dark blue) */
+  --mute: #5a6a87;        /* secondary text */
+
+  --brand: #58b6ff;       /* sky blue (header/cta accent) */
+  --brand-2: #ffd15e;     /* warm accent (stars/gold tone) */
+  --accent-red: #e53935;  /* flag red (sparingly) */
+
+  --ring: rgba(88,182,255,.45);
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(11,18,32,.12);
     }
+    
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
